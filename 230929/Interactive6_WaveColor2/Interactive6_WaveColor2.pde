@@ -1,50 +1,9 @@
-//　---------- シリアル通信の部分 ここから ---------- //
-//シリアル通信のライブラリを読込む
-
-import processing.serial.*;
-
-Serial myPort;  // シリアル通信を管理する変数
-int PORT_NUM = 7; // 毎回確認して数値を変える
-
-
-//受信したセンサのデータを入れる配列
-//受信データが3つなので、3コの配列をつくる
-float[] sensorData=new float[3];
-
-//シリアル通信でデータを受けとると自動的に呼び出される
-void serialEvent (Serial p) {
-
-  //文字列の改行まで読み取る（ASCIIコードの「10」が改行を示す）
-  String stringData = p.readStringUntil(10);
-
-  if (stringData!=null) {  //stringDataが空っぽでなければ
-
-    //文字列にある先頭と末尾の空白を取り除き、データだけに整える
-    stringData=trim(stringData);
-
-    //「,」で区切られたデータ部分を分けて、buffer配列に格納する
-    float buffer[] = float(split(stringData, ','));
-
-    //buffer配列のデータが3個そろったら、sensorDataへ入れる
-    if (buffer.length>=3) {
-
-      sensorData[0] = -buffer[0];
-      sensorData[1] =  buffer[1];
-      sensorData[2] =  buffer[2];
-
-    }
-
-  }
-
-}
-//　---------- シリアル通信の部分 ここまで ---------- //
-
 
 // 調整用パラメータ
 int ALPHA = 100;
 color[] BASE_COLORS = {color(255,0,0,ALPHA), color(0,255,0,ALPHA), color(0,0,255,ALPHA)};
-float WAVE_SIZE = 50.0;
-float CIRCLE_SIZE = 300.0;
+float WAVE_SIZE = 15.0;
+float CIRCLE_SIZE = 10.0;
 int BLUR_IMAGE_RATE = 4;
 
 //// 変数
@@ -57,16 +16,13 @@ int fillRectCount = 0;
 
 
 void setup () {
-
-  //　---------- シリアル通信の部分 ここまで ---------- //
-  printArray(Serial.list());  //シリアルポートの番号を確認
-  String portName = Serial.list()[PORT_NUM];  //1番目のポートに接続（自分のPCでは1番目かどうか確認して適宜変更）
-  myPort = new Serial(this, portName, 9600);  //選んだポートに、9600の速度で接続する
-  //　---------- シリアル通信の部分 ここまで ---------- //
+  
+  // デバイスとの通信をセット
+  Setup_Serial();
 
 
-  size( 512, 512 );
-  fullScreen(2);
+  size( 960, 540 );
+  fullScreen(2); // セカンドディスプレイへ
 
   background( 0 );
 
@@ -102,11 +58,29 @@ void draw () {
     float x = cos(rad) * sensorData[i]*WAVE_SIZE + width /2;
     float y = sin(rad) * sensorData[i]*WAVE_SIZE + height/2;
     
-    // ブラーなし
-    drawCircle( (int)x, (int)y, (int)CIRCLE_SIZE );
     
-    // ブラー付きの円
-    //blurCircle( (int)x, (int)y, (int)CIRCLE_SIZE, drawColor, blurSize );
+    int X_NUM = 10;
+    int Y_NUM = 6;
+    int marginX = width  / X_NUM;
+    int marginY = height / Y_NUM;
+    int xPos = 0;
+    int yPos = 0;
+    for ( int xLine = 0; xLine < X_NUM-1; xLine++ ) {
+      
+      xPos = xLine * marginX - width/2 + marginX;
+      
+      for ( int yLine = 0; yLine < Y_NUM-1; yLine++ ) {
+        
+        yPos = yLine * marginX - height/2 + marginY;
+      
+        // ブラーなし
+        drawCircle( (int)x + xPos, (int)y + yPos, (int)CIRCLE_SIZE );
+    
+        // ブラー付きの円
+        //blurCircle( (int)x, (int)y, (int)CIRCLE_SIZE, drawColor, blurSize );
+    
+      }
+    }
   
 }
 
