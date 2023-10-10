@@ -14,7 +14,9 @@
 │   └── 資料PP23aから
 ├── tips
 │   ├── CheckDevice：繋がっているデバイスを一覧表示
-│   └── MultiDevices：複数のデバイスを使う
+│   ├── MultiDevices：複数のデバイスを使う
+│   ├── VisualizeLifexx：生き物っぽく見える
+│   └── VisualizeRandomxx：ランダム数値
 ├── arduino
 │   └── M5StackCore2に書き込むarduinoプログラム
 ├── README.md（このファイル）
