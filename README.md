@@ -12,6 +12,9 @@
 │   └── 授業日ごとのサンプル
 ├── PP23a_ogino
 │   └── 資料PP23aから
+├── tips
+│   ├── CheckDevice：繋がっているデバイスを一覧表示
+│   └── MultiDevices：複数のデバイスを使う
 ├── arduino
 │   └── M5StackCore2に書き込むarduinoプログラム
 ├── README.md（このファイル）
