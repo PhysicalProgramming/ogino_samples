@@ -25,10 +25,14 @@ void setup () {
   textFont(notoSansR);
   textSize(12);
   
+  //frameRate(1);
+  
 }
 
 
 void draw () {
+  
+  //println(mouseX);
   
   // 移動位置から移動量（速度）を計算
   velocityX = mouseX - pmouseX;
@@ -99,6 +103,7 @@ void Draw_DebugMessage () {
   fill( 32, 255 );
   rect( 18, 18-12, 300, 18 );
   rect( 18, 38-12, 300, 18 );
+  
   fill( 200, 255 );
   text( String.format("pos x:%4d y:%4d preX:%4d preY:%4d", mouseX, mouseY, pmouseX, pmouseY), 20, 20 );
   text( String.format("vel x:%4.0f y:%4.0f ave:%5.1f", velocityX, velocityY, velocityAve), 20, 40 );
@@ -138,8 +143,8 @@ void Draw_DebugMouseMove () {
     float preVel = constrain( (float)velAveList.get(i-1), 0, 100.0 );
     float vel    = constrain( (float)velAveList.get(i),   0, 100.0 );
     
-    float graphY1 = map ( preVel, 0, 100.0, 0, 30.0 );
-    float graphY2 = map ( vel,    0, 100.0, 0, 30.0 );
+    float graphY1 = preVel;//map ( preVel, 0, 100.0, 0, 30.0 );
+    float graphY2 = vel;//map ( vel,    0, 100.0, 0, 30.0 );
 
     if ( (boolean)isClickList.get(i-1) || (boolean)isClickList.get(i) ) {
       stroke( 230, 230, 30 );
@@ -149,6 +154,7 @@ void Draw_DebugMouseMove () {
       stroke( 230, 120, 30 );
       strokeWeight( 1 );
     }
+    
     line( i-1, height - graphY1 - marginBottom,
           i,   height - graphY2 - marginBottom );
     

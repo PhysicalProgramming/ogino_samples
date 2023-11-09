@@ -7,13 +7,13 @@ void setup() {
 }
 
 int count = 0;
-int countMax = 3;
+int countMax = 0;
 void draw() {
   
   if ( count > countMax ) {
     background(250);
     count = 0;
-    countMax = 3;//int(random(1.0,3.0));
+    countMax = int(random(1.0,5.0));
   }
   count++;
   

@@ -1,0 +1,7 @@
+
+float VELOCITY_MAX = 200.0;
+float CLICK_THRESHOLD = 20.0;
+int CLICK_THRESHOLD_COUNT = 3;
+
+
+/* End */

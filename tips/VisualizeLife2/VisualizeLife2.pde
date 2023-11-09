@@ -1,6 +1,6 @@
 // https://dekfractal.com/493.html
 
-int BIRTH_NUM = 300;
+int BIRTH_NUM = 1;//300;
 Life[] lifes;
 
 
