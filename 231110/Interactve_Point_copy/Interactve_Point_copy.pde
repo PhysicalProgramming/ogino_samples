@@ -1,6 +1,6 @@
 
-float pointX = 0;
-float pointY = 0;
+float pointX = 0, pPointX = 0;
+float pointY = 0, pPointY = 0;
 
 void setup () {
 	
@@ -15,19 +15,23 @@ void setup () {
 	textSize(12);
 
 
-	pointX = 0;
-	pointY = height / 2;
+  pPointX = pointX = 0;
+  pPointY = pointY = height / 2;
 	
 }
 
 
 void draw () {
+  
+  //background(0);
 
 	CheckMouse();
 	CheckKeyboard();
 
+  Update_Point();
+  Draw_Couple();
 	//Draw_Point();
-	Draw_Mouse();
+	//Draw_Mouse();
 
 	Draw_FillOver();
 
@@ -38,6 +42,28 @@ void draw () {
 	// グラフ
 	Draw_DebugMouseMove();
 	
+}
+
+
+void Update_Point () {
+
+  pPointX = pointX;
+  pPointY = pointY;
+
+  noiseSeed( millis() );
+
+  pointX += 4;
+  //pointY += random( -20, 20 );
+
+  //pointY = height/2 - random( -20, 20 );
+  pointY = height/2 - noise( pointX ) * 100;
+
+  if ( pointX > width ) {
+
+    pPointX = pointX = 0;
+
+  }
+
 }
 
 
@@ -53,6 +79,17 @@ void Draw_Point () {
 
 }
 
+void Draw_Couple () {
+
+  stroke( 255, 255, 255,  255 );
+  strokeWeight( 10 );
+
+  line( pPointX, pPointY,  pointX, pointY );
+
+  noStroke();
+
+}
+
 
 void Draw_Mouse () {
 
@@ -65,7 +102,7 @@ void Draw_FillOver () {
 
 	blendMode( MULTIPLY );
 
-	fill( 255, bgFillOpacity );
+	fill( 0, bgFillOpacity );
 	rect( 0, 0, width, height );
 
 	blendMode( BLEND );

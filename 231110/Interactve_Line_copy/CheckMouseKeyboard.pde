@@ -34,7 +34,6 @@ void CheckKeyboard () {
 
 	}
 
-
 	if ( keyCode == LEFT ) {
 
 		frameRate--;

@@ -1,6 +1,6 @@
 
-int bgFillOpacity = 127;
-int frameRate = 30;
+int bgFillOpacity = 1;
+int frameRate = 10;
 
 float velocityX = 0;
 float velocityY = 0;

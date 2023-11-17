@@ -19,7 +19,8 @@ int fillRectCount = 0;
 
 void setup () {
   
-  size( 512, 512 );
+  //size( 512, 512 );
+  size( 1024, 1024 );
   //fullScreen();
   
   background( 0 );

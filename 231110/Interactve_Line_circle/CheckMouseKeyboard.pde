@@ -1,6 +1,6 @@
 
-int bgFillOpacity = 127;
-int frameRate = 30;
+int bgFillOpacity = 1;
+int frameRate = 60;
 
 float velocityX = 0;
 float velocityY = 0;
@@ -33,7 +33,6 @@ void CheckKeyboard () {
 		if ( bgFillOpacity < 1 ) bgFillOpacity = 1;
 
 	}
-
 
 	if ( keyCode == LEFT ) {
 

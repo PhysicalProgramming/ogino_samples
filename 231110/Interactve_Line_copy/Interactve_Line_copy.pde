@@ -4,7 +4,7 @@ ArrayList<PVector> points = new ArrayList<PVector>();
 void setup () {
 	
 	size( 512, 512 );
-	//fullScreen(2);
+	//fullScreen();
 	
 	background( 0 );
 	
@@ -21,11 +21,9 @@ void InitPoint () {
 
 	points.clear();
 
-	for ( int pointX = 0; pointX < width; pointX+=1 ) {
+	for ( int pointPosX = 0; pointPosX < width; pointPosX+=1 ) {
 
-		float pointY = height/2 - noise( pointX ) * 100;
-
-		PVector point = new PVector( pointX, pointY );
+		PVector point = new PVector( pointPosX, height/2 );
 		points.add( point );
 
 	}
@@ -40,7 +38,6 @@ void draw () {
 
 	Update_line();
 	Draw_Line();
-	
 	//Draw_Mouse();
 	Draw_FillOver();
 
@@ -55,20 +52,27 @@ void draw () {
 
 
 void Update_line () {
-
-	float rad = radians( millis()*0.01 );
-
-	noiseSeed( millis() / 50 );
-	//noiseSeed( int(sin( radians( millis() / 100 ) ) * 100) );
+  
+  float rad = radians( millis()*0.01 );
+  
+  //noiseSeed( millis() / 50 );
 
 	for ( int pointNum = 0; pointNum < points.size(); pointNum++ ) {
 
 		PVector point = points.get( pointNum );
 
-		point.y = height/2;
-		point.y += cos( rad ) * height/2;
-		point.y += -noise( sin(rad) + point.x*0.02 ) * 100;
+		//float deg = point.x / width * 360;
+		//point.y = height/2 - sin( radians(deg) ) * 100;
+		//point.y = height/2 - sin( radians(deg)+millis()*0.001 ) * 100;
 
+    point.y = height/2;
+    //point.y += -noise( point.x*0.02 ) * 100;
+    //point.y += -random(1.0) * 100;
+
+    //point.y += cos( rad ) * height/2;
+    point.y += -noise( rad + point.x*0.02 ) * 100;
+    //point.y += -noise( sin(rad) + point.x*0.02 ) * 100;
+    
 		points.set( pointNum, point );
 
 	}

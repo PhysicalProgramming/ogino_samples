@@ -43,7 +43,9 @@ class Life {
     changeDirCount--;
     
     
-    pos.add( dir );
+    pos.x += dir.x;
+    pos.y += dir.y;
+    //pos.add( dir );
     
   }
   
