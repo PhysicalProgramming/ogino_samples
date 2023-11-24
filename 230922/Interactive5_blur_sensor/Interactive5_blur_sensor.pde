@@ -69,8 +69,9 @@ void setup () {
   //　---------- シリアル通信の部分 ここまで ---------- //
 
 
-  size( 512, 512 );
-  //fullScreen();
+  //size( 512, 512 );
+  //size( 1024, 1024 );
+  fullScreen(2);
 
   background( 0 );
 

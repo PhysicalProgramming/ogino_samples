@@ -1,0 +1,9 @@
+
+float VELOCITY_MAX = 100.0;
+float CLICK_THRESHOLD = 8.0;
+int CLICK_THRESHOLD_COUNT = 2;
+float CIRCLE_SIZE_MAX = 100.0;
+int BLUR_IMAGE_RATE = 2;
+
+
+/* End */
