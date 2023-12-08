@@ -41,7 +41,7 @@ class GraphicsImage {
 		pos = new PVector( random(width), random(height) );
 		vel = new PVector( 0, 0 );
 
-		//SetRandom();
+		SetRandom();
 
 	}
 
@@ -56,6 +56,8 @@ class GraphicsImage {
 		//vel = new PVector( random(1,3), 0 );
 		vel = new PVector( 1/(float)UPDATE_COUNT*20., 0 );
 
+    scale = random(0.5, 3);
+
 	}
 
 	void Draw_graphicsImage () {
@@ -64,6 +66,7 @@ class GraphicsImage {
 			pg.background(255,0);
 			pg.noStroke();
 			pg.image( imgs[animeCount], 0, 0 );
+      pg.filter(BLUR, scale );
 		pg.endDraw();
 
 		updateCount++;

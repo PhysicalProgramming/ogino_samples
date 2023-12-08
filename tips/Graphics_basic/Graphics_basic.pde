@@ -6,6 +6,7 @@ float velocityAve = 0;
 float circleSize = 20;
 int fillRectCount = 0;
 
+PGraphics pg;
 
 void setup () {
 	
@@ -15,6 +16,21 @@ void setup () {
 	background( 0 );
 
 	settingFont();
+
+
+
+  pg = createGraphics(100, 100);
+
+  pg.beginDraw();
+    pg.background(255, 0);
+    pg.noStroke();
+    pg.fill(255,0,0);
+    pg.circle( 50,50, 100 );
+  pg.endDraw();
+  
+  image( pg, width/2, height/2 );
+  
+  noLoop();
 	
 }
 

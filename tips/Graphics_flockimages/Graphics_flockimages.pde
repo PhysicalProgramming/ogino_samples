@@ -1,6 +1,6 @@
 
 GraphicsImage[] gImgs;
-int IMAGE_COUNT = 1;//200;
+int IMAGE_COUNT = 50;
 
 int fillRectCount = 0;
 

@@ -32,6 +32,7 @@ void Draw_graphicsImage ( int x, int y ) {
 		pg.background(255,0);
 		pg.noStroke();
 		pg.image( imgs[animeCount], 0, 0 );
+    pg.filter(BLUR, 2);
 	pg.endDraw();
 
 	updateCount++;

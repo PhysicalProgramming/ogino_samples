@@ -16,22 +16,49 @@ void setup () {
 
 	smooth();
 	pushMatrix();
-	translate( width/2, height/2 );
+	translate( width/2-100, height/2 );
 	scale(2.0);
 	rotate( PI/6 );
-		image( img, -img.width/2, -img.height/2 );
+		image( img, 0, 0 );
 	popMatrix();	
 
-	noLoop();
+  smooth();
+  pushMatrix();
+  translate( width/2+100, height/2 );
+  scale(2.0);
+  rotate( PI/6 );
+    image( img, -img.width/2, -img.height/2 );
+  popMatrix();  
+
+	//noLoop();
 	
 }
 
 
 void draw () {
+  
+  background(0);
 	
 	//マウスの動き
 	Check_MouseMove();
 	
+  smooth();
+  pushMatrix();
+  translate( width/2-100, height/2 );
+  scale(2.0);
+  rotate( 2*PI * millis()*0.0002 );
+    image( img, 0, 0 );
+  popMatrix();  
+
+  smooth();
+  pushMatrix();
+  translate( width/2+100, height/2 );
+  scale(2.0);
+  rotate( 2*PI * millis()*0.0002 );
+    image( img, -img.width/2, -img.height/2 );
+  popMatrix();  
+  
+  
 	//overlay();
 	
 	//// Debug（動作確認用）

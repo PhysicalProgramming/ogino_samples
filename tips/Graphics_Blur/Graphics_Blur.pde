@@ -19,8 +19,47 @@ void setup () {
 	background( 0 );
 
 	settingFont();
-	
+
+
+  pg = createGraphics(100, 100);
+  pg.beginDraw();
+    pg.background(255);
+    pg.fill(255, 0, 0);
+    pg.circle( 50,50, 100 );
+    //pg.filter(BLUR, 10);
+  pg.endDraw();
+  
+  blendMode(SCREEN);
+  image( pg, width/2-100, height/2 );
+  blendMode( BLEND );
+
+  int gW = 100;
+  int gH = 100;
+  pg = createGraphics(gW, gH);
+  pg.beginDraw();
+    pg.background(0,0);
+    pg.fill(255, 0, 0);
+    pg.circle( gW/2,gH/2, 100 );
+    pg.filter(BLUR, 10);
+  pg.endDraw();
+  
+  blendMode(SCREEN);
+  image( pg, width/2+100, height/2 );
 	blendMode( BLEND );
+
+  pg = createGraphics(gW*2, gH*2);
+  pg.beginDraw();
+    pg.background(0,0);
+    pg.fill(255, 0, 0);
+    pg.circle( gW*2 / 2, gH*2 / 2, 100 );
+    pg.filter(BLUR, 10);
+  pg.endDraw();
+  
+  blendMode(SCREEN);
+  image( pg, width/2+200, height/2 );
+  blendMode( BLEND );
+
+  noLoop();
 	
 }
 

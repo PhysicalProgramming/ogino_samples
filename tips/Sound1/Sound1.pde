@@ -27,6 +27,9 @@ void setup () {
   // サウンドファイル
   soundFile = new SoundFile( this, "disabled.wav" );
   
+  
+  //soundFile.play( 1, 2 );
+  //noLoop();
   //frameRate(1);
   
 }

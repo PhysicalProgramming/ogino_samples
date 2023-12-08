@@ -35,9 +35,10 @@ void draw () {
 
 
 	pushMatrix();
-	translate( width/2, height/2 );
+  //translate( width/2, height/2 );
+  translate( mouseX, mouseY );
 	scale(2.0);
-	rotate( PI/6 );
+	rotate( 0 );
 		image( imgs[animeCount], -imgs[animeCount].width/2, -imgs[animeCount].height/2 );
 	popMatrix();
 

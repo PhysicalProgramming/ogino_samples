@@ -1,5 +1,5 @@
 
-PGraphics pg;
+//PGraphics pg;
 
 void graphicsCircle ( int x, int y, int r, color c ) {
 	
